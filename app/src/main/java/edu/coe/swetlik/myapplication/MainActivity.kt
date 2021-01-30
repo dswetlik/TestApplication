@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import java.text.NumberFormat
 import java.util.function.ToIntFunction
@@ -19,20 +20,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Log.i("Create", "Complete")
+
+        var btn:Button = this.findViewById<Button>(R.id.hotdogDec);
+        btn.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                decreaseAmount(v, R.id.count_text)
+            }
+        })
+        var btn2:Button = this.findViewById<Button>(R.id.hotdogInc);
+        btn2.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                increaseAmount(v, R.id.count_text)
+            }
+        })
+
     }
 
     fun greet(v:View) {
-        //Toast.makeText(this, "Toasty", Toast.LENGTH_SHORT).show();
-        changeTxt(v);
+        Toast.makeText(this, "Button Did Not Work", Toast.LENGTH_SHORT).show();
     }
 
-    fun changeTxt(v:View) {
-        var g = this.findViewById<TextView>(R.id.output_price_view);
-        g.setText("12");
-        var num = g.text.toString().toInt();
-    }
-
-    fun increaseAmount(v: View)
+    fun increaseAmount(v: View?, id:Int)
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
         var i = this.findViewById<TextView>(R.id.count_text)
@@ -42,15 +50,20 @@ class MainActivity : AppCompatActivity() {
         i.setText(hotDogCount.toString());
     }
 
-    fun decreaseAmount(v: View)
+    fun decreaseAmount(v: View?, id:Int)
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
-        var i = this.findViewById<TextView>(R.id.count_text)
+        var i = this.findViewById<TextView>(id)
 
         hotDogCount--
         if(hotDogCount < 0)
             hotDogCount = 0
         g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * hotDogCount).toString());
         i.setText(hotDogCount.toString());
+    }
+
+    fun SetOnClick(buttonId:Int, textId:Int)
+    {
+
     }
 }
