@@ -14,6 +14,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="52dp"
         android:text="Output"
+        android:tag="totalOutput"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -40,7 +41,7 @@
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
         android:onClick="decreaseAmount"
-        android:tag="0"
+        android:tag="1"
         android:text="@string/sub"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

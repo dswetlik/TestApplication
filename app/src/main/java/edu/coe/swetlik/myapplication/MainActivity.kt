@@ -6,6 +6,7 @@ import android.widget.Toast
 import android.util.Log
 import android.view.View
 import android.widget.TextView
+import java.text.NumberFormat
 import java.util.function.ToIntFunction
 
 class MainActivity : AppCompatActivity() {
@@ -35,8 +36,9 @@ class MainActivity : AppCompatActivity() {
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
         var i = this.findViewById<TextView>(R.id.count_text)
+
         hotDogCount++
-        g.setText((hotDogCount * hotDogPrice).toString());
+        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * hotDogCount).toString());
         i.setText(hotDogCount.toString());
     }
 
@@ -48,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         hotDogCount--
         if(hotDogCount < 0)
             hotDogCount = 0
-        g.setText((hotDogPrice * hotDogCount).toString());
+        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * hotDogCount).toString());
         i.setText(hotDogCount.toString());
     }
 }
