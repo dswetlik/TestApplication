@@ -21,18 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         Log.i("Create", "Complete")
 
-        var btn:Button = this.findViewById<Button>(R.id.hotdogDec);
-        btn.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                decreaseAmount(v, R.id.count_text)
-            }
-        })
-        var btn2:Button = this.findViewById<Button>(R.id.hotdogInc);
-        btn2.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                increaseAmount(v, R.id.count_text)
-            }
-        })
+        setOnClick(R.id.hotdogInc, R.id.count_text, true)
+        setOnClick(R.id.hotdogDec, R.id.count_text, false)
 
     }
 
@@ -43,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     fun increaseAmount(v: View?, id:Int)
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
-        var i = this.findViewById<TextView>(R.id.count_text)
+        var i = this.findViewById<TextView>(id)
 
         hotDogCount++
         g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * hotDogCount).toString());
@@ -62,8 +52,16 @@ class MainActivity : AppCompatActivity() {
         i.setText(hotDogCount.toString());
     }
 
-    fun SetOnClick(buttonId:Int, textId:Int)
+    fun setOnClick(buttonId:Int, textId:Int, isIncrease:Boolean)
     {
-
+        var btn:Button = this.findViewById<Button>(buttonId)
+        btn.setOnClickListener(object: View.OnClickListener {
+            override fun onClick(v: View?) {
+                if(isIncrease)
+                    increaseAmount(v, textId)
+                else
+                    decreaseAmount(v, textId)
+            }
+        })
     }
 }
