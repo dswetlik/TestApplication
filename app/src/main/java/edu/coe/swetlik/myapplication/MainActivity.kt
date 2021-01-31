@@ -34,22 +34,30 @@ class MainActivity : AppCompatActivity() {
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
         var i = this.findViewById<TextView>(id)
+        try {
+            var j:Int = i.toString().toInt()
+        }
+        catch (e:NumberFormatException)
+        {
+            Toast.makeText(this, "Error: Incorrect Int Value", Toast.LENGTH_LONG).show()
+        }
+        /*j++
 
-        hotDogCount++
-        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * hotDogCount).toString());
-        i.setText(hotDogCount.toString());
+        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * j).toString());
+        i.setText(j.toString()); */
     }
 
     fun decreaseAmount(v: View?, id:Int)
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
         var i = this.findViewById<TextView>(id)
-
-        hotDogCount--
-        if(hotDogCount < 0)
-            hotDogCount = 0
-        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * hotDogCount).toString());
-        i.setText(hotDogCount.toString());
+        i.text = "0"
+        var j:Int = i.toString().toInt()
+        j--
+        if(j < 0)
+            j = 0
+        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * j).toString());
+        i.setText(j.toString());
     }
 
     fun setOnClick(buttonId:Int, textId:Int, isIncrease:Boolean)

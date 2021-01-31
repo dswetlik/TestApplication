@@ -3,4 +3,5 @@
     <string name="msg">Complied Successfully</string>
     <string name="add">+</string>
     <string name="sub">-</string>
+    <string name="startAtZero">0</string>
 </resources>
