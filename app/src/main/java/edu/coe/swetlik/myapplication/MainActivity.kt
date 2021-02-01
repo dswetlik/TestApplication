@@ -13,7 +13,7 @@ import java.util.function.ToIntFunction
 
 class MainActivity : AppCompatActivity() {
 
-    var priceList:List<Int> = emptyList()
+    var priceList:MutableList<Int> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +22,12 @@ class MainActivity : AppCompatActivity() {
         setOnClick(R.id.incHotdog, R.id.countHotdog, R.id.priceHotdog,true)
         setOnClick(R.id.decHotdog, R.id.countHotdog, R.id.priceHotdog,false)
         setOnClick(R.id.incSoda, R.id.countSoda, R.id.priceSoda,true)
-        setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false
-        )
+        setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false)
+
+        for(i in priceList)
+            Log.i("intTest", i.toString())
+        if(priceList.count() == 0)
+            Log.i("intText", "priceList is empty")
     }
 
     fun greet(v:View) {
@@ -32,46 +36,66 @@ class MainActivity : AppCompatActivity() {
 
     fun increaseAmount(v: View?, countId:Int, priceId:Int)
     {
-        var g = this.findViewById<TextView>(R.id.output_price_view)
-        var h = this.findViewById<TextView>(countId)
-        var i:Int = Integer.valueOf(this.findViewById<TextView>(priceId).text.toString())
+        val g = this.findViewById<TextView>(R.id.output_price_view)
+        val h = this.findViewById<TextView>(countId)
+        val i:Int = Integer.valueOf(this.findViewById<TextView>(priceId).text.toString())
         var j:Int = Integer.valueOf(this.findViewById<TextView>(countId).text.toString())
 
         j++
 
-        g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
+        //g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
         h.setText(j.toString());
+        updatePrice()
     }
 
     fun decreaseAmount(v: View?, countId:Int, priceId: Int)
     {
-        var g = this.findViewById<TextView>(R.id.output_price_view)
-        var h = this.findViewById<TextView>(countId)
-        var i:Int = Integer.valueOf(this.findViewById<TextView>(priceId).text.toString())
+        val g = this.findViewById<TextView>(R.id.output_price_view)
+        val h = this.findViewById<TextView>(countId)
+        val i:Int = Integer.valueOf(this.findViewById<TextView>(priceId).text.toString())
         var j:Int = Integer.valueOf(this.findViewById<TextView>(countId).text.toString())
 
         j--
         if(j < 0)
             j = 0
-        g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
+        //g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
         h.setText(j.toString());
+        updatePrice()
     }
 
     fun updatePrice()
     {
+        var totalPrice:Int = 0;
+
+        for(i in 0 until priceList.count() step 2 )
+        {
+            Log.i("intText", this.findViewById<TextView>(priceList[i]).text.toString())
+
+            var x = Integer.valueOf(this.findViewById<TextView>(priceList[i]).text.toString())
+            var y = Integer.valueOf(this.findViewById<TextView>(priceList[i + 1]).text.toString())
+
+            totalPrice += x * y
+        }
+
+        this.findViewById<TextView>(R.id.output_price_view).setText(NumberFormat.getCurrencyInstance().format(totalPrice).toString())
+
 
     }
 
     fun setOnClick(buttonId:Int, textId:Int, priceId: Int, isIncrease:Boolean)
     {
-        var btn:Button = this.findViewById<Button>(buttonId)
+        val btn:Button = this.findViewById<Button>(buttonId)
         btn.setOnClickListener(object: View.OnClickListener {
             override fun onClick(v: View?) {
-                if(isIncrease)
+                if (isIncrease)
                     increaseAmount(v, textId, priceId)
                 else
                     decreaseAmount(v, textId, priceId)
             }
         })
+        if(!priceList.contains(textId))
+            priceList.add(textId)
+        if(!priceList.contains(priceId))
+            priceList.add(priceId)
     }
 }
