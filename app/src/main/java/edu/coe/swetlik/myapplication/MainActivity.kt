@@ -7,9 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import org.w3c.dom.Text
 import java.text.NumberFormat
-import java.util.function.ToIntFunction
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun greet(v:View) {
-        Toast.makeText(this, "Button Did Not Work", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Button Did Not Work", Toast.LENGTH_SHORT).show()
     }
 
     fun increaseAmount(v: View?, countId:Int, priceId:Int)
@@ -43,8 +41,7 @@ class MainActivity : AppCompatActivity() {
 
         j++
 
-        //g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
-        h.setText(j.toString());
+        h.setText(j.toString())
         updatePrice()
     }
 
@@ -58,19 +55,17 @@ class MainActivity : AppCompatActivity() {
         j--
         if(j < 0)
             j = 0
-        //g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
-        h.setText(j.toString());
+
+        h.setText(j.toString())
         updatePrice()
     }
 
     fun updatePrice()
     {
-        var totalPrice:Int = 0;
+        var totalPrice:Int = 0
 
         for(i in 0 until priceList.count() step 2 )
         {
-            Log.i("intText", this.findViewById<TextView>(priceList[i]).text.toString())
-
             var x = Integer.valueOf(this.findViewById<TextView>(priceList[i]).text.toString())
             var y = Integer.valueOf(this.findViewById<TextView>(priceList[i + 1]).text.toString())
 
@@ -79,7 +74,16 @@ class MainActivity : AppCompatActivity() {
 
         this.findViewById<TextView>(R.id.output_price_view).setText(NumberFormat.getCurrencyInstance().format(totalPrice).toString())
 
+    }
 
+    fun resetCart(v:View)
+    {
+        for(i in 0 until priceList.count() step 2)
+        {
+            this.findViewById<TextView>(priceList[i]).text = "0"
+        }
+
+        updatePrice()
     }
 
     fun setOnClick(buttonId:Int, textId:Int, priceId: Int, isIncrease:Boolean)
