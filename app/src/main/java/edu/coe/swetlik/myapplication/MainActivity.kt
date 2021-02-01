@@ -7,65 +7,70 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import org.w3c.dom.Text
 import java.text.NumberFormat
 import java.util.function.ToIntFunction
 
 class MainActivity : AppCompatActivity() {
 
-    var hotDogPrice:Int = 2
-    var hotDogCount:Int = 0
+    var priceList:List<Int> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Log.i("Create", "Complete")
-
-        setOnClick(R.id.hotdogInc, R.id.count_text, true)
-        setOnClick(R.id.hotdogDec, R.id.count_text, false)
-
+        setOnClick(R.id.incHotdog, R.id.countHotdog, R.id.priceHotdog,true)
+        setOnClick(R.id.decHotdog, R.id.countHotdog, R.id.priceHotdog,false)
+        setOnClick(R.id.incSoda, R.id.countSoda, R.id.priceSoda,true)
+        setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false
+        )
     }
 
     fun greet(v:View) {
         Toast.makeText(this, "Button Did Not Work", Toast.LENGTH_SHORT).show();
     }
 
-    fun increaseAmount(v: View?, id:Int)
+    fun increaseAmount(v: View?, countId:Int, priceId:Int)
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
-        var i = this.findViewById<TextView>(id)
-
-        var j:Int = Integer.valueOf(i.getText().toString())
+        var h = this.findViewById<TextView>(countId)
+        var i:Int = Integer.valueOf(this.findViewById<TextView>(priceId).text.toString())
+        var j:Int = Integer.valueOf(this.findViewById<TextView>(countId).text.toString())
 
         j++
 
-        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * j).toString());
-        i.setText(j.toString());
+        g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
+        h.setText(j.toString());
     }
 
-    fun decreaseAmount(v: View?, id:Int)
+    fun decreaseAmount(v: View?, countId:Int, priceId: Int)
     {
         var g = this.findViewById<TextView>(R.id.output_price_view)
-        var i = this.findViewById<TextView>(id)
-
-        var j:Int = Integer.valueOf(i.getText().toString())
+        var h = this.findViewById<TextView>(countId)
+        var i:Int = Integer.valueOf(this.findViewById<TextView>(priceId).text.toString())
+        var j:Int = Integer.valueOf(this.findViewById<TextView>(countId).text.toString())
 
         j--
         if(j < 0)
             j = 0
-        g.setText(NumberFormat.getCurrencyInstance().format(hotDogPrice * j).toString());
-        i.setText(j.toString());
+        g.setText(NumberFormat.getCurrencyInstance().format(i * j).toString());
+        h.setText(j.toString());
     }
 
-    fun setOnClick(buttonId:Int, textId:Int, isIncrease:Boolean)
+    fun updatePrice()
+    {
+
+    }
+
+    fun setOnClick(buttonId:Int, textId:Int, priceId: Int, isIncrease:Boolean)
     {
         var btn:Button = this.findViewById<Button>(buttonId)
         btn.setOnClickListener(object: View.OnClickListener {
             override fun onClick(v: View?) {
                 if(isIncrease)
-                    increaseAmount(v, textId)
+                    increaseAmount(v, textId, priceId)
                 else
-                    decreaseAmount(v, textId)
+                    decreaseAmount(v, textId, priceId)
             }
         })
     }
