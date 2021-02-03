@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import org.w3c.dom.Text
 import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
@@ -22,10 +23,6 @@ class MainActivity : AppCompatActivity() {
         setOnClick(R.id.incSoda, R.id.countSoda, R.id.priceSoda,true)
         setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false)
 
-        for(i in priceList)
-            Log.i("intTest", i.toString())
-        if(priceList.count() == 0)
-            Log.i("intText", "priceList is empty")
     }
 
     fun greet(v:View) {
