@@ -9,7 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
 
-class UpDownBox : TableRow, View.OnClickListener {
+class UpDownBox : LinearLayout, View.OnClickListener {
 
     private var mItemName: TextView? = null
     private var mItemPrice: TextView? = null
@@ -30,6 +30,12 @@ class UpDownBox : TableRow, View.OnClickListener {
         ta.recycle()
     }
 
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr ) {
+        initializeViews(context)
+        val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
+        startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
+        ta.recycle()
+    }
 
     private fun initializeViews(context: Context) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
