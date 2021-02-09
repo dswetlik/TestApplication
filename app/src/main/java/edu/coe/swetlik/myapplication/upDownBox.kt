@@ -17,6 +17,8 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     private var mUpButton: Button? = null
     private var mValue: TextView? = null
     private var startVal = 0
+    private var itemName = " "
+    private var itemPrice = 0
 
     constructor(context: Context) : super(context)
     {
@@ -27,6 +29,8 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         initializeViews(context)
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
         startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
+        itemName = context.getString(R.string.blank)
+        itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
         ta.recycle()
     }
 
@@ -34,6 +38,8 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         initializeViews(context)
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
         startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
+        itemName = context.getString(R.string.blank)
+        itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
         ta.recycle()
     }
 
@@ -45,7 +51,9 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     override fun onFinishInflate() {
         super.onFinishInflate()
         mItemName = findViewById<View>(R.id.itemNameText) as TextView
+        mItemName!!.text = itemName.toString()
         mItemPrice = findViewById<View>(R.id.itemPriceText) as TextView
+        mItemPrice!!.text = itemPrice.toString()
         mDownButton = findViewById<View>(R.id.downButton) as Button
         mUpButton = findViewById<View>(R.id.upButton) as Button
         mValue = findViewById<View>(R.id.txtValue) as TextView
@@ -60,6 +68,18 @@ class UpDownBox : LinearLayout, View.OnClickListener {
             mValue!!.text = v.toString()
         }
 
+    var name: String
+        get() = mItemName!!.text.toString()
+        set(v) {
+            mItemName!!.text = v.toString()
+        }
+
+    var price: Int
+        get() = mItemPrice!!.text.toString().toInt()
+        set(v) {
+            mItemPrice!!.text.toString()
+        }
+
     override fun onClick(v: View) {
         var `val` = mValue!!.text.toString().toInt()
         when (v.id) {
@@ -68,4 +88,6 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         }
         mValue!!.text = `val`.toString()
     }
+
+
 }

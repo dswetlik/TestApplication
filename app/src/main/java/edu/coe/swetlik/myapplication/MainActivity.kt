@@ -6,6 +6,7 @@ import android.widget.Toast
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import org.w3c.dom.Text
 import java.io.File
@@ -13,17 +14,30 @@ import java.text.NumberFormat
 
 class MainActivity : AppCompatActivity() {
 
-    var priceList:MutableList<Int> = mutableListOf()
+    var itemList:MutableList<UpDownBox> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /*
         setOnClick(R.id.incHotdog, R.id.countHotdog, R.id.priceHotdog,true)
         setOnClick(R.id.decHotdog, R.id.countHotdog, R.id.priceHotdog,false)
         setOnClick(R.id.incSoda, R.id.countSoda, R.id.priceSoda,true)
         setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false)
+        */
 
+        for(i in 0 until this.findViewById<LinearLayout>(R.id.ItemContainer).childCount step 1)
+            run {
+                var item: Pair<View, UpDownBox> = this.findViewById<LinearLayout>(R.id.ItemContainer).getChildAt(i) to UpDownBox(this)
+                itemList.add(item.second)
+                Log.i("ListItem", "Added upDownBox$i to list.")
+            }
+
+        var item:UpDownBox = itemList[0]
+
+        Log.i("ListItem", "Price: ${item.value}")
+                    //itemList[0].itemPrice = 1
     }
 
     override fun onDestroy() {
@@ -68,13 +82,6 @@ class MainActivity : AppCompatActivity() {
     {
         var totalPrice:Int = 0
 
-        for(i in 0 until priceList.count() step 2 )
-        {
-            var x = Integer.valueOf(this.findViewById<TextView>(priceList[i]).text.toString())
-            var y = Integer.valueOf(this.findViewById<TextView>(priceList[i + 1]).text.toString())
-
-            totalPrice += x * y
-        }
 
         this.findViewById<TextView>(R.id.output_price_view).setText(NumberFormat.getCurrencyInstance().format(totalPrice).toString())
 
@@ -82,10 +89,7 @@ class MainActivity : AppCompatActivity() {
 
     fun resetCart(v:View)
     {
-        for(i in 0 until priceList.count() step 2)
-        {
-            this.findViewById<TextView>(priceList[i]).text = "0"
-        }
+
 
         updatePrice()
     }
@@ -101,9 +105,5 @@ class MainActivity : AppCompatActivity() {
                     decreaseAmount(v, textId, priceId)
             }
         })
-        if(!priceList.contains(textId))
-            priceList.add(textId)
-        if(!priceList.contains(priceId))
-            priceList.add(priceId)
     }
 }

@@ -2,6 +2,6 @@
 <resources>
     <declare-styleable name="UpDownBox">
         <attr name="startVal" format="integer"/>
+        <attr name="itemPrice" format="integer"/>
     </declare-styleable>
-
 </resources>
