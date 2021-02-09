@@ -29,7 +29,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         initializeViews(context)
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
         startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
-        itemName = context.getString(R.string.blank)
+        itemName = ta.getString(R.styleable.UpDownBox_itemName).toString()
         itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
         ta.recycle()
     }
@@ -38,7 +38,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         initializeViews(context)
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
         startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
-        itemName = context.getString(R.string.blank)
+        itemName = ta.getString(R.styleable.UpDownBox_itemName).toString()
         itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
         ta.recycle()
     }

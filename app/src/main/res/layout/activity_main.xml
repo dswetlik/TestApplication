@@ -20,24 +20,38 @@
 
         <edu.coe.swetlik.myapplication.UpDownBox
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:itemName=" "
+            app:itemPrice="0"
+            app:startVal="0"
+            tools:itemPrice="0"
+            tools:startVal="0">
 
         </edu.coe.swetlik.myapplication.UpDownBox>
 
         <edu.coe.swetlik.myapplication.UpDownBox
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:itemName=" "
+            app:itemPrice="0"
+            app:startVal="0" />
 
         <edu.coe.swetlik.myapplication.UpDownBox
             android:id="@+id/upDownBox"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:itemName=" "
+            app:itemPrice="0"
+            app:startVal="0">
 
         </edu.coe.swetlik.myapplication.UpDownBox>
 
         <edu.coe.swetlik.myapplication.UpDownBox
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:itemName=" "
+            app:itemPrice="0"
+            app:startVal="0">
 
         </edu.coe.swetlik.myapplication.UpDownBox>
     </LinearLayout>
