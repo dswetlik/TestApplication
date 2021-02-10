@@ -86,14 +86,14 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         }
 
     override fun onClick(v: View) {
-        var `val` = mValue!!.text.toString().toInt()
+        var x = mValue!!.text.toString().toInt()
         when (v.id) {
-            R.id.downButton -> `val`--
-            R.id.upButton -> `val`++
+            R.id.downButton -> x--
+            R.id.upButton -> x++
         }
-        if(`val` < 0)
-            `val` = 0
-        mValue!!.text = `val`.toString()
+        if(x < 0)
+            x = 0
+        mValue!!.text = x.toString()
     }
 
 
