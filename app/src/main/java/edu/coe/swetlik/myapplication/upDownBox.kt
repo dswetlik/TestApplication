@@ -17,9 +17,9 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     private var mDownButton: Button? = null
     private var mUpButton: Button? = null
     private var mValue: TextView? = null
-    private var startVal = 0
-    private var itemName = "Item Name"
-    private var itemPrice = 0
+    private var startVal: Int = 0
+    private var itemName: String = "Item Name"
+    private var itemPrice: Int = 0
 
     constructor(context: Context) : super(context)
     {
@@ -68,21 +68,21 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     }
 
     public var value: Int
-        get() = Integer.valueOf(mValue?.text.toString())
+        get() = mValue!!.text.toString().toInt()
         set(v) {
-            mValue?.text = v.toString()
+            mValue!!.text = v.toString()
         }
 
     public var name: String
-        get() = mItemName?.text.toString()
+        get() = mItemName!!.text.toString()
         set(v) {
-            mItemName?.text = v.toString()
+            mItemName!!.text = v.toString()
         }
 
     public var price: Int
-        get() = Integer.valueOf(mItemPrice?.text.toString())
+        get() = Integer.valueOf(mItemPrice!!.text.toString())
         set(v) {
-            mItemPrice?.text = v.toString()
+            mItemPrice!!.text = v.toString()
         }
 
     override fun onClick(v: View) {

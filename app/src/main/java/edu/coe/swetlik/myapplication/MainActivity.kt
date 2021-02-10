@@ -34,11 +34,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i("ListItem", "Added upDownBox$i to list.")
             }
 
-
-        var item:UpDownBox = itemList[0]
-        //if(item != null)
-            //Log.i("ListItem", "Price: ${item.value}")
-                    //itemList[0].itemPrice = 1
+        //var x: Int = itemList[0].value;
     }
 
     override fun onDestroy() {
