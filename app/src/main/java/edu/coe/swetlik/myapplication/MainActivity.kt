@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false)
         */
 
-
     }
 
     override fun onDestroy() {
@@ -37,7 +36,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun greet(v:View) {
-        Toast.makeText(this, "Button Did Not Work", Toast.LENGTH_SHORT).show()
+
+        for(i in 0 until this.findViewById<LinearLayout>(R.id.ItemContainer).childCount step 1)
+        {
+            var item: Pair<View, UpDownBox> = this.findViewById<LinearLayout>(R.id.ItemContainer).getChildAt(i) to UpDownBox(this)
+            itemList.add(item.second)
+            //Log.i("ListItem", "Added ${item.seco}")
+        }
+
+
+        Log.i("Variable Test", "Value of itemList object: ${itemList[0].value}")
     }
 
     fun increaseAmount(v: View?, countId:Int, priceId:Int)
