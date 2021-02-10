@@ -28,13 +28,11 @@ class MainActivity : AppCompatActivity() {
         */
 
         for(i in 0 until this.findViewById<LinearLayout>(R.id.ItemContainer).childCount step 1)
-            run {
-                var item: Pair<View, UpDownBox> = this.findViewById<LinearLayout>(R.id.ItemContainer).getChildAt(i) to UpDownBox(this)
-                itemList.add(item.second)
-                Log.i("ListItem", "Added upDownBox$i to list.")
-            }
-
-        //var x: Int = itemList[0].value;
+        {
+            var item: Pair<View, UpDownBox> = this.findViewById<LinearLayout>(R.id.ItemContainer).getChildAt(i) to UpDownBox(this)
+            itemList.add(item.second)
+            Log.i("ListItem", "Added upDownBox$i to list.")
+        }
     }
 
     override fun onDestroy() {

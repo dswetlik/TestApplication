@@ -54,15 +54,12 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         super.onFinishInflate()
         mItemName = findViewById<View>(R.id.itemNameText) as TextView
         mItemName!!.text = itemName.toString()
-        Log.i("NullValue?", "mItemName is ${mItemName!!.text.toString()}")
         mItemPrice = findViewById<View>(R.id.itemPriceText) as TextView
         mItemPrice!!.text = itemPrice.toString()
         mDownButton = findViewById<View>(R.id.downButton) as Button
         mUpButton = findViewById<View>(R.id.upButton) as Button
         mValue = findViewById<View>(R.id.txtValue) as TextView
         mValue!!.text = startVal.toString()
-        var x: String = mValue!!.text.toString()
-        Log.i("NullValue?", "mValue is $x")
         mDownButton!!.setOnClickListener(this)
         mUpButton!!.setOnClickListener(this)
     }
