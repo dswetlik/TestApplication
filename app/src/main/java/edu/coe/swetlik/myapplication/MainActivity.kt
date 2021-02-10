@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.widget.Toast
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import org.w3c.dom.Text
 import java.io.File
 import java.text.NumberFormat
 
@@ -27,12 +27,7 @@ class MainActivity : AppCompatActivity() {
         setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false)
         */
 
-        for(i in 0 until this.findViewById<LinearLayout>(R.id.ItemContainer).childCount step 1)
-        {
-            var item: Pair<View, UpDownBox> = this.findViewById<LinearLayout>(R.id.ItemContainer).getChildAt(i) to UpDownBox(this)
-            itemList.add(item.second)
-            Log.i("ListItem", "Added upDownBox$i to list.")
-        }
+
     }
 
     override fun onDestroy() {
