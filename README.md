@@ -1,6 +1,7 @@
 # TestApplication
 First Test of Android Studio, Concession Cashier Calculator
 
+First Entry  
 This one was more testing. I'm not sure if I'm supposed to be working on this yet, but it really made me more curious than anything else to work on.  
   
 Honestly, in an IDE like Unity, this would be a cakewalk! I could have this whole idea done in a jiffy, but unfortunately we aren't using Unity nor C#, so it's difficult for me. In Unity, I would create what is called a "prefab," a prefabricated set of objects that I could instantiate or destroy quite easily with Instantiate() or Destroy(). In Android Studio, I don't think there is a such thing as a prefab. My searches for it did not dig up anything of the sort, at least. This left me questioning how to create new UI objects on the fly, setting IDs and such. What I found was pretty complex, and I wasn't thrilled, as creating a new menu item would take a ton of hard code anyway, sort of mitigating the reason as to why to not have it hardcoded in the first place. At some point in the next few weeks I plan on looking through this again and trying to develop this.  
@@ -31,3 +32,11 @@ What I am most proud of with my work here is working around the whole no-variabl
  This I was comfortable with, as I've previously done something like this. It also goes to mention that Android Studio wanted to use a lambda expression, which is usually what I do in C#. I didn't want to do that because it affects the readability of the code to me, and I'm not the most comfortable with Kotlin anyway.  
   
 Otherwise, everything else went about as planned. 
+  
+Second Entry  
+2/10/2021   
+With the addition of custom UI objects, I thought I would have it complete. But no, I kept getting KotlinNullPointerExceptions. I could not figure out how to get that fixed either. My method of catching the UI objects was to get all the children of the base LinearLayout and add those children into a MutableList of UpDownObjects. Now that I think about it, my code for getting the children might have been wrong, but I don't really see how that could have happened. I have since reverted the code and will go back for another swing at it later today.  
+
+I did, however, successfully change the updownbox, adding in two new TextViews. I'm not quite understanding the point of the <attr> though, they really didn't seem to do anything different when you could just declare them as a private var inside the class.  
+  
+AKA: Basically everything that I tried failed.
