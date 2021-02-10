@@ -35,7 +35,7 @@ Otherwise, everything else went about as planned.
   
 Second Entry  
 2/10/2021   
-With the addition of custom UI objects, I thought I would have it complete. But no, I kept getting KotlinNullPointerExceptions. I could not figure out how to get that fixed either. My method of catching the UI objects was to get all the children of the base LinearLayout and add those children into a MutableList of UpDownObjects. Now that I think about it, my code for getting the children might have been wrong, but I don't really see how that could have happened. I have since reverted the code and will go back for another swing at it later today.  
+With the addition of custom UI objects, I thought I would have it complete. But no, I kept getting KotlinNullPointerExceptions. I could not figure out how to get that fixed either. My method of catching the UI objects was to get all the children of the base LinearLayout and add those children into a MutableList of UpDownObjects. Now that I think about it, my code for getting the children might have been wrong, but I don't really see how that could have happened. I have since reverted the code and will go back for another swing at it later today. It's worth mentioning as well that I tried to make a TableRow custom object, but I couldn't get that working either, so I reverted it to a LinearLayout object again. 
 
 I did, however, successfully change the updownbox, adding in two new TextViews. I'm not quite understanding the point of the <attr> though, they really didn't seem to do anything different when you could just declare them as a private var inside the class.  
   
