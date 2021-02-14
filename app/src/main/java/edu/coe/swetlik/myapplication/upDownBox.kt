@@ -10,6 +10,8 @@ import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
 import android.text.TextWatcher
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class UpDownBox : LinearLayout, View.OnClickListener {
 
@@ -20,7 +22,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     private var mValue: TextView? = null
     private var startVal: Int = 0
     private var itemName: String = "Item Name"
-    private var itemPrice: Int = 0
+    private var itemPrice: Float = 0f
 
     constructor(context: Context) : super(context)
     {
@@ -32,7 +34,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
         startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
         itemName = ta.getString(R.styleable.UpDownBox_itemName).toString()
-        itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
+        itemPrice = ta.getFloat(R.styleable.UpDownBox_itemPrice, 0f)
         ta.recycle()
     }
 
@@ -41,7 +43,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
         startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
         itemName = ta.getString(R.styleable.UpDownBox_itemName).toString()
-        itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
+        itemPrice = ta.getFloat(R.styleable.UpDownBox_itemPrice, 0f)
 
         ta.recycle()
     }
@@ -81,10 +83,11 @@ class UpDownBox : LinearLayout, View.OnClickListener {
             mItemName!!.text = v.toString()
         }
 
-    public var price: Int
-        get() = Integer.valueOf(mItemPrice!!.text.toString())
+    public var price: Float
+        get() = DecimalFormat.getCurrencyInstance().parse(mItemPrice!!.text.toString()).toFloat()
         set(v) {
-            mItemPrice!!.text = v.toString()
+            mItemPrice!!.text = NumberFormat.getCurrencyInstance().format(v).toString()
+
         }
 
     override fun onClick(v: View) {

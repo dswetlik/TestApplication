@@ -29,12 +29,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        createNewItem("Hot Dog", 1)
-        createNewItem("Hamburger", 2)
-        createNewItem("Soda", 1)
+        createNewItem("Hot Dog", 1.5f)
+        createNewItem("Hamburger", 2.00f)
+        createNewItem("Soda", 1.25f)
     }
 
-    private fun createNewItem(name:String, price:Int)
+    private fun createNewItem(name:String, price:Float)
     {
         var box = UpDownBox(this)
         box.name = name
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     return
             }
 
-            createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toInt())
+            createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toFloat())
         }
 
         nameEdit.text.clear()
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
 
     fun updatePrice()
     {
-        var totalPrice:Int = 0
+        var totalPrice:Float = 0f
 
         for(x in itemList)
             totalPrice += (x.value * x.price)

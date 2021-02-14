@@ -3,6 +3,6 @@
     <declare-styleable name="UpDownBox">
         <attr name="startVal" format="integer"/>
         <attr name="itemName" format="string"/>
-        <attr name="itemPrice" format="integer"/>
+        <attr name="itemPrice" format="float"/>
     </declare-styleable>
 </resources>
