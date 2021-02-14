@@ -28,7 +28,7 @@
         android:layout_marginRight="24dp"
         android:layout_marginBottom="96dp"
         android:tag="totalOutput"
-        android:text="Output"
+        android:text="$0.00"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

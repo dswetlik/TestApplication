@@ -51,8 +51,16 @@ class MainActivity : AppCompatActivity() {
         var nameEdit = this.findViewById<EditText>(R.id.editItemName)
         var priceEdit = this.findViewById<EditText>(R.id.editItemPrice)
 
-        if(nameEdit.text.toString() != "" && priceEdit.text.toString() != "")
+        if(nameEdit.text.toString() != "" && priceEdit.text.toString() != "") {
+
+            for(x in itemList)
+            {
+                if(x.name.toString() == nameEdit.text.toString())
+                    return
+            }
+
             createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toInt())
+        }
     }
 
     override fun onDestroy() {
