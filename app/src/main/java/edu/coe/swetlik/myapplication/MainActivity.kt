@@ -2,6 +2,8 @@ package edu.coe.swetlik.myapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import android.util.Log
 import android.view.View
@@ -16,6 +18,17 @@ class MainActivity : AppCompatActivity() {
 
     var itemList:MutableList<UpDownBox> = mutableListOf()
 
+    val textWatcher = object: TextWatcher {
+        override fun afterTextChanged(s: Editable?) { }
+
+        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
+
+        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            updatePrice()
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,6 +40,20 @@ class MainActivity : AppCompatActivity() {
         setOnClick(R.id.decSoda, R.id.countSoda, R.id.priceSoda, false)
         */
 
+        createNewItem("Hot Dog", 1)
+        createNewItem("Hamburger", 2)
+        createNewItem("Soda", 1)
+    }
+
+    fun createNewItem(name:String, price:Int)
+    {
+        var box = UpDownBox(this)
+        box.name = name
+        box.price = price
+        box.value = 0
+        this.findViewById<LinearLayout>(R.id.ItemContainer).addView(box)
+        itemList.add(box)
+        box.setTextWatcher(textWatcher)
     }
 
     override fun onDestroy() {
@@ -41,11 +68,17 @@ class MainActivity : AppCompatActivity() {
         {
             var item: Pair<View, UpDownBox> = this.findViewById<LinearLayout>(R.id.ItemContainer).getChildAt(i) to UpDownBox(this)
             itemList.add(item.second)
-            //Log.i("ListItem", "Added ${item.seco}")
+            //item.second.name = "Hamburger"
+
+            Log.i("Variable Test", "Added ${item.second.name}")
         }
 
+        itemList[0].name = "Hot Dog"
+        itemList[0].price = 2
+        itemList[1].name = "Soda"
+        itemList[1].price = 1
 
-        Log.i("Variable Test", "Value of itemList object: ${itemList[0].value}")
+        Log.i("Variable Test", "Name of itemList object: ${itemList[0].name}")
     }
 
     fun increaseAmount(v: View?, countId:Int, priceId:Int)
@@ -80,6 +113,8 @@ class MainActivity : AppCompatActivity() {
     {
         var totalPrice:Int = 0
 
+        for(x in itemList)
+            totalPrice += (x.value * x.price)
 
         this.findViewById<TextView>(R.id.output_price_view).setText(NumberFormat.getCurrencyInstance().format(totalPrice).toString())
 

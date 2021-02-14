@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TableRow
 import android.widget.TextView
+import android.text.TextWatcher
 
 class UpDownBox : LinearLayout, View.OnClickListener {
 
@@ -29,18 +30,18 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         initializeViews(context)
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
-        //startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
-        //itemName = " "
-        //itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
+        startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
+        itemName = ta.getString(R.styleable.UpDownBox_itemName).toString()
+        itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
         ta.recycle()
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr ) {
         initializeViews(context)
         val ta = context.obtainStyledAttributes(attrs, R.styleable.UpDownBox)
-        //startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
-        //itemName = " "
-        //itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
+        startVal = ta.getInt(R.styleable.UpDownBox_startVal, 0)
+        itemName = ta.getString(R.styleable.UpDownBox_itemName).toString()
+        itemPrice = ta.getInt(R.styleable.UpDownBox_itemPrice, 0)
 
         ta.recycle()
     }
@@ -48,10 +49,6 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     private fun initializeViews(context: Context) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.updownbox, this)
-    }
-
-    override fun onFinishInflate() {
-        super.onFinishInflate()
         mItemName = findViewById<View>(R.id.itemNameText) as TextView
         mItemName!!.text = itemName.toString()
         mItemPrice = findViewById<View>(R.id.itemPriceText) as TextView
@@ -62,6 +59,14 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         mValue!!.text = startVal.toString()
         mDownButton!!.setOnClickListener(this)
         mUpButton!!.setOnClickListener(this)
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+    }
+
+    public fun setTextWatcher(watcher: TextWatcher) {
+        mValue!!.addTextChangedListener(watcher)
     }
 
     public var value: Int
