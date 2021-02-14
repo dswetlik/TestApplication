@@ -68,7 +68,10 @@ class MainActivity : AppCompatActivity() {
 
     fun resetCart(v:View)
     {
-
+        for(x in itemList)
+        {
+            x.value = 0
+        }
 
         updatePrice()
     }
