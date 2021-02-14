@@ -16,7 +16,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible"/>
+        tools:visibility="visible">
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/output_price_view"
@@ -24,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="96dp"
         android:tag="totalOutput"
         android:text="Output"
         android:textSize="18sp"
@@ -37,10 +39,53 @@
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="84dp"
         android:onClick="resetCart"
         android:text="@string/clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editItemName"
+        android:layout_width="160dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="Enter Item Name..."
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editItemPrice"
+        android:layout_width="105dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="and Price..."
+        android:inputType="number"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editItemName" />
+
+    <Button
+        android:id="@+id/addItemBtn"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginLeft="29dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="23dp"
+        android:onClick="addNewItem"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editItemPrice" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

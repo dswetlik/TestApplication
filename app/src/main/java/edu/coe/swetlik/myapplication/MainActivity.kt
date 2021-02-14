@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import java.io.File
 import java.text.NumberFormat
 
@@ -47,6 +44,15 @@ class MainActivity : AppCompatActivity() {
         this.findViewById<LinearLayout>(R.id.ItemContainer).addView(box)
         itemList.add(box)
         box.setTextWatcher(textWatcher)
+    }
+
+    fun addNewItem(v: View)
+    {
+        var nameEdit = this.findViewById<EditText>(R.id.editItemName)
+        var priceEdit = this.findViewById<EditText>(R.id.editItemPrice)
+
+        if(nameEdit.text.toString() != "" && priceEdit.text.toString() != "")
+            createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toInt())
     }
 
     override fun onDestroy() {
