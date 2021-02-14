@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
     var itemList:MutableList<UpDownBox> = mutableListOf()
 
-    val textWatcher = object: TextWatcher {
+    private val textWatcher = object: TextWatcher {
         override fun afterTextChanged(s: Editable?) { }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) { }
@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
             updatePrice()
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         createNewItem("Soda", 1)
     }
 
-    fun createNewItem(name:String, price:Int)
+    private fun createNewItem(name:String, price:Int)
     {
         var box = UpDownBox(this)
         box.name = name
@@ -48,11 +47,10 @@ class MainActivity : AppCompatActivity() {
 
     fun addNewItem(v: View)
     {
-        var nameEdit = this.findViewById<EditText>(R.id.editItemName)
-        var priceEdit = this.findViewById<EditText>(R.id.editItemPrice)
+        val nameEdit = this.findViewById<EditText>(R.id.editItemName)
+        val priceEdit = this.findViewById<EditText>(R.id.editItemPrice)
 
-        if(nameEdit.text.toString() != "" && priceEdit.text.toString() != "") {
-
+        if(nameEdit.text.toString() != "" && priceEdit.text.toString() != "" && itemList.count() < 8) {
             for(x in itemList)
             {
                 if(x.name.toString() == nameEdit.text.toString())
@@ -61,12 +59,9 @@ class MainActivity : AppCompatActivity() {
 
             createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toInt())
         }
-    }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        val file = File(this.filesDir, "saveData")
-
+        nameEdit.text.clear()
+        priceEdit.text.clear()
     }
 
     fun updatePrice()
