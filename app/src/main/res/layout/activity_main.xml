@@ -88,4 +88,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editItemPrice" />
 
+    <Button
+        android:id="@+id/payBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="43dp"
+        android:layout_marginRight="43dp"
+        android:layout_marginBottom="14dp"
+        android:text="@string/pay"
+        app:layout_constraintBottom_toTopOf="@+id/editItemPrice"
+        app:layout_constraintEnd_toStartOf="@+id/output_price_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

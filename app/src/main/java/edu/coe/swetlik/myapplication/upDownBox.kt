@@ -1,6 +1,7 @@
 package edu.coe.swetlik.myapplication
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import java.text.NumberFormat
 
 class UpDownBox : LinearLayout, View.OnClickListener {
 
+    private var mBaseObj: LinearLayout? = this
     private var mItemName: TextView? = null
     private var mItemPrice: TextView? = null
     private var mDownButton: Button? = null
@@ -74,6 +76,9 @@ class UpDownBox : LinearLayout, View.OnClickListener {
     public var value: Int
         get() = mValue!!.text.toString().toInt()
         set(v) {
+            if(v > 0) mBaseObj!!.setBackgroundColor(Color.GREEN)
+            else mBaseObj!!.setBackgroundColor(Color.WHITE)
+
             mValue!!.text = v.toString()
         }
 
@@ -91,14 +96,14 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         }
 
     override fun onClick(v: View) {
-        var x = mValue!!.text.toString().toInt()
+        var x = value
         when (v.id) {
             R.id.downButton -> x--
             R.id.upButton -> x++
         }
         if(x < 0)
             x = 0
-        mValue!!.text = x.toString()
+        value = x
     }
 
 
