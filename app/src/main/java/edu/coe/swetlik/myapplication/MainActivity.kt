@@ -54,7 +54,11 @@ class MainActivity : AppCompatActivity() {
             for(x in itemList)
             {
                 if(x.name.toString() == nameEdit.text.toString())
+                {
+                    x.removeAllViews()
+                    itemList.remove(x)
                     return
+                }
             }
 
             createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toFloat())
