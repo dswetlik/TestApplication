@@ -4,6 +4,16 @@ class Item {
 
     companion object {
         var ItemList: MutableList<Item> = mutableListOf()
+
+        fun addItem(item: Item)
+        {
+            ItemList.add(item)
+        }
+
+        fun removeItem(item: Item)
+        {
+            ItemList.remove(item)
+        }
     }
 
     private var mName: String? = null
@@ -19,14 +29,6 @@ class Item {
     {
         this.mName = name
         this.mPrice = price
-    }
-
-    fun addItem(item: Item) {
-        Item.ItemList.add(item)
-    }
-
-    fun removeItem(item: Item) {
-        Item.ItemList.remove(item)
     }
 
     var name: String

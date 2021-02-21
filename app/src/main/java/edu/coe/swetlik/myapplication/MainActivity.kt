@@ -29,9 +29,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        createNewItem("Hot Dog", 1.5f)
-        createNewItem("Hamburger", 2.00f)
-        createNewItem("Soda", 1.25f)
+
+
+        Item.ItemList.forEach { createNewItem(it.name, it.price) }
     }
 
     private fun createNewItem(name:String, price:Float)
