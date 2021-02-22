@@ -12,6 +12,7 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
+
         Item.ItemList.forEach { createNewItem(it.name, it.price) }
 
     }
@@ -36,7 +37,9 @@ class AdminActivity : AppCompatActivity() {
                     return
 
             createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toFloat())
-            Item.addItem(Item(nameEdit.text.toString(), priceEdit.toString().toFloat()))
+
+            var item: Item = Item(nameEdit.text.toString(), priceEdit.text.toString().toFloat())
+            Item.addItem(item)
         }
 
         nameEdit.text.clear()

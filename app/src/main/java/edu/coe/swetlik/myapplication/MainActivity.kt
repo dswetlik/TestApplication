@@ -30,11 +30,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Item.addItem(Item("Hot Dog", 1f))
+        for(box in itemList) {
+            box.removeAllViews()
+        }
+
+        itemList.clear()
 
         Item.ItemList.forEach { createNewItem(it.name, it.price) }
 
-        Item.removeItem(Item("Hot Dog", 1f))
     }
 
     private fun createNewItem(name:String, price:Float)
@@ -46,29 +49,6 @@ class MainActivity : AppCompatActivity() {
         this.findViewById<LinearLayout>(R.id.ItemContainer).addView(box)
         itemList.add(box)
         box.setTextWatcher(textWatcher)
-    }
-
-    fun addNewItem(v: View)
-    {
-        val nameEdit = this.findViewById<EditText>(R.id.editItemName)
-        val priceEdit = this.findViewById<EditText>(R.id.editItemPrice)
-
-        if(nameEdit.text.toString() != "" && priceEdit.text.toString() != "" && itemList.count() < 8) {
-            for(x in itemList)
-            {
-                if(x.name.toString() == nameEdit.text.toString())
-                {
-                    x.removeAllViews()
-                    itemList.remove(x)
-                    return
-                }
-            }
-
-            createNewItem(nameEdit.text.toString(), priceEdit.text.toString().toFloat())
-        }
-
-        nameEdit.text.clear()
-        priceEdit.text.clear()
     }
 
     fun updatePrice()

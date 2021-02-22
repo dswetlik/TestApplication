@@ -12,18 +12,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible">
-
-        <edu.coe.swetlik.myapplication.AdminItemBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <edu.coe.swetlik.myapplication.AdminItemBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        tools:visibility="visible" />
 
     <EditText
         android:id="@+id/editItemPrice"
