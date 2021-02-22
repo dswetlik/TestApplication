@@ -48,10 +48,10 @@ class AdminItemBox : LinearLayout, View.OnClickListener {
 
     private fun initializeViews(context: Context) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.updownbox, this)
-        mItemName = findViewById<View>(R.id.itemNameEditText) as EditText
+        inflater.inflate(R.layout.adminitembox, this)
+        mItemName = findViewById<View>(R.id.itemNameEditText) as EditText?
         mItemName!!.hint = itemName.toString()
-        mItemPrice = findViewById<View>(R.id.itemPriceEditText) as EditText
+        mItemPrice = findViewById<View>(R.id.itemPriceEditText) as EditText?
         mItemPrice!!.hint = itemPrice.toString()
         mRemoveButton = findViewById<View>(R.id.removeButton) as Button
 

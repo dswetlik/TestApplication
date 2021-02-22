@@ -8,4 +8,6 @@
     <string name="blank"> </string>
     <string name="pay">Pay</string>
     <string name="remove">Remove</string>
+    <string name="user">User</string>
+    <string name="admin">Admin</string>
 </resources>

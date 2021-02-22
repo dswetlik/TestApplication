@@ -17,4 +17,10 @@ class startScreen : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun loadAdminActivity(v: View)
+    {
+        val intent = Intent(this@startScreen, AdminActivity::class.java)
+        startActivity(intent)
+    }
+
 }

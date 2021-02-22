@@ -1,5 +1,6 @@
 package edu.coe.swetlik.myapplication
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -89,6 +90,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         updatePrice()
+    }
+
+    fun loadAdminActivity(v: View)
+    {
+        val intent = Intent(this@MainActivity, AdminActivity::class.java)
+        startActivity(intent)
     }
 
 }

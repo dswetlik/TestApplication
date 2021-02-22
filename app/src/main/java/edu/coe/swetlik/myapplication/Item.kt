@@ -18,7 +18,7 @@ class Item {
             ItemList.removeAt(getIndexOfItem(item))
         }
 
-        fun getIndexOfItem(item: Item): Int
+        private fun getIndexOfItem(item: Item): Int
         {
             for(x in ItemList)
             {
