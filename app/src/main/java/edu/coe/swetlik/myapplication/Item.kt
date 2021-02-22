@@ -1,5 +1,8 @@
 package edu.coe.swetlik.myapplication
 
+import android.util.Log
+import java.util.function.Predicate
+
 class Item {
 
     companion object {
@@ -12,7 +15,19 @@ class Item {
 
         fun removeItem(item: Item)
         {
-            ItemList.remove(item)
+            ItemList.removeAt(getIndexOfItem(item))
+        }
+
+        fun getIndexOfItem(item: Item): Int
+        {
+            for(x in ItemList)
+            {
+                if(x.name == item.name && x.price == item.price) {
+                    Log.i("ReturnValue", "Found item at ${ItemList.indexOf(x)}")
+                    return ItemList.indexOf(x)
+                }
+            }
+            return 9
         }
     }
 

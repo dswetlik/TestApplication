@@ -29,9 +29,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        Item.addItem(Item("Hot Dog", 1f))
 
         Item.ItemList.forEach { createNewItem(it.name, it.price) }
+
+        Item.removeItem(Item("Hot Dog", 1f))
     }
 
     private fun createNewItem(name:String, price:Float)

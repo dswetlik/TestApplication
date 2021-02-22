@@ -5,4 +5,10 @@
         <attr name="itemName" format="string"/>
         <attr name="itemPrice" format="float"/>
     </declare-styleable>
+
+    <declare-styleable name="AdminItemBox">
+        <attr name="adminItemName" format="string"/>
+        <attr name="adminItemPrice" format="float"/>
+    </declare-styleable>
+
 </resources>

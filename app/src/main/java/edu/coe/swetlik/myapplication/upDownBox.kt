@@ -3,12 +3,10 @@ package edu.coe.swetlik.myapplication
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.TableRow
 import android.widget.TextView
 import android.text.TextWatcher
 import java.text.DecimalFormat
@@ -58,7 +56,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         mItemPrice = findViewById<View>(R.id.itemPriceText) as TextView
         mItemPrice!!.text = itemPrice.toString()
         mDownButton = findViewById<View>(R.id.downButton) as Button
-        mUpButton = findViewById<View>(R.id.upButton) as Button
+        mUpButton = findViewById<View>(R.id.removeButton) as Button
         mValue = findViewById<View>(R.id.txtValue) as TextView
         mValue!!.text = startVal.toString()
         mDownButton!!.setOnClickListener(this)
@@ -99,7 +97,7 @@ class UpDownBox : LinearLayout, View.OnClickListener {
         var x = value
         when (v.id) {
             R.id.downButton -> x--
-            R.id.upButton -> x++
+            R.id.removeButton -> x++
         }
         if(x < 0)
             x = 0
