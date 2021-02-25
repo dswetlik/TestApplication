@@ -8,6 +8,14 @@ class Item {
     companion object {
         var ItemList: MutableList<Item> = mutableListOf()
 
+        fun updateItem(item: Item, name: String, price: Float) {
+            val x = getIndexOfItem(item);
+
+            ItemList[x].name = name
+            ItemList[x].price = price
+        }
+
+
         fun addItem(item: Item)
         {
             ItemList.add(item)

@@ -55,6 +55,7 @@ class AdminItemBox : LinearLayout, View.OnClickListener {
         mRemoveButton = findViewById<View>(R.id.removeButton) as Button
         mUpdateButton = findViewById<View>(R.id.updateButton) as Button
         mRemoveButton!!.setOnClickListener(this)
+        mUpdateButton!!.setOnClickListener(this)
     }
 
     override fun onFinishInflate() {
@@ -81,8 +82,19 @@ class AdminItemBox : LinearLayout, View.OnClickListener {
             this.removeAllViews()
         }
         if(v!!.id == R.id.updateButton) {
+            Log.i("Updating Item", "Updating Item")
+            if (mItemName!!.text.isNotEmpty() && mItemName!!.text.isNotBlank()) {
+                Item.updateItem(Item(name, price), mItemName!!.text.toString(), price)
+                name = mItemName!!.text.toString()
+            }
 
+            if(mItemPrice!!.text.isNotEmpty() && mItemPrice!!.text.isNotBlank()) {
+                Item.updateItem(Item(name, price), name, mItemPrice!!.text.toString().toFloat())
+                price = mItemPrice!!.text.toString().toFloat()
+            }
+
+            mItemName!!.text.clear()
+            mItemPrice!!.text.clear()
         }
     }
-
 }
