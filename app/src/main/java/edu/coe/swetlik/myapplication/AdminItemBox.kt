@@ -2,12 +2,10 @@ package edu.coe.swetlik.myapplication
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
 
@@ -17,6 +15,7 @@ class AdminItemBox : LinearLayout, View.OnClickListener {
     private var mItemName: EditText? = null
     private var mItemPrice: EditText? = null
     private var mRemoveButton: Button? = null
+    private var mUpdateButton: Button? = null
 
     private var itemName: String = "Item Name"
     private var itemPrice: Float = 0f
@@ -54,7 +53,7 @@ class AdminItemBox : LinearLayout, View.OnClickListener {
         mItemPrice = findViewById<View>(R.id.itemPriceEditText) as EditText?
         mItemPrice!!.hint = itemPrice.toString()
         mRemoveButton = findViewById<View>(R.id.removeButton) as Button
-
+        mUpdateButton = findViewById<View>(R.id.updateButton) as Button
         mRemoveButton!!.setOnClickListener(this)
     }
 
@@ -76,7 +75,14 @@ class AdminItemBox : LinearLayout, View.OnClickListener {
         }
 
     override fun onClick(v: View?) {
+        if(v!!.id == R.id.removeButton) {
+            Log.i("Removing", "Removing $name")
+            Item.removeItem(Item(name, price))
+            this.removeAllViews()
+        }
+        if(v!!.id == R.id.updateButton) {
 
+        }
     }
 
 }

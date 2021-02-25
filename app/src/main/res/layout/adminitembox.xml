@@ -6,8 +6,8 @@
 
     <EditText
         android:id="@+id/itemNameEditText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
+        android:layout_width="174dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:ems="10"
         android:hint="Enter Name..."
@@ -15,18 +15,27 @@
 
     <EditText
         android:id="@+id/itemPriceEditText"
-        android:layout_width="77dp"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:ems="10"
         android:hint="Price..."
         android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/removeButton"
-        android:layout_width="115dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/updateButton"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="@string/remove" />
+        android:text="@string/update"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/removeButton"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/remove"
+        android:textSize="12sp" />
 
 </LinearLayout>
