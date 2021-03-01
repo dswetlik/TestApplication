@@ -9,6 +9,8 @@ class startScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
+
+        Item.createDatabase(this)
     }
 
     fun loadMainActivity(v: View)

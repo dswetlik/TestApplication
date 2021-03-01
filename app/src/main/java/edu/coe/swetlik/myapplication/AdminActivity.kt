@@ -13,7 +13,7 @@ class AdminActivity : AppCompatActivity() {
         setContentView(R.layout.activity_admin)
 
 
-        Item.ItemList.forEach { createNewItem(it.name, it.price) }
+        Item.getDatabase().forEach { createNewItem(it.name, it.price) }
 
     }
 
@@ -49,6 +49,9 @@ class AdminActivity : AppCompatActivity() {
     fun loadMainActivity(v: View)
     {
         val intent = Intent(this@AdminActivity, MainActivity::class.java)
+
+        Item.setDatabase()
+
         startActivity(intent)
     }
 }

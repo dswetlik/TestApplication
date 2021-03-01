@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         itemList.clear()
 
-        Item.ItemList.forEach { createNewItem(it.name, it.price) }
+        Item.getDatabase().forEach { createNewItem(it.name, it.price) }
 
     }
 

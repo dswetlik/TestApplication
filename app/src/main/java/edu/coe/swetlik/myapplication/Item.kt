@@ -1,11 +1,17 @@
 package edu.coe.swetlik.myapplication
 
+import android.content.Context
 import android.util.Log
 import java.util.function.Predicate
 
 class Item {
 
     companion object {
+
+        private lateinit var database: SQLDatabase
+
+        var CURRENT_ID: Int = 0;
+
         var ItemList: MutableList<Item> = mutableListOf()
 
         fun updateItem(item: Item, name: String, price: Float) {
@@ -14,7 +20,6 @@ class Item {
             ItemList[x].name = name
             ItemList[x].price = price
         }
-
 
         fun addItem(item: Item)
         {
@@ -37,10 +42,28 @@ class Item {
             }
             return 9
         }
+
+        fun createDatabase(c: Context) {
+            database = SQLDatabase(c)
+        }
+
+        fun setDatabase() {
+            database.clearData()
+            for(x in ItemList) {
+                database.insertData(x)
+            }
+        }
+
+        fun getDatabase(): MutableList<Item> {
+            ItemList = database.readData()
+            return ItemList
+        }
+
     }
 
     private var mName: String? = null
     private var mPrice: Float = 0f
+    private var mID: Int = 0;
 
     constructor()
     {
