@@ -55,7 +55,7 @@ class SQLDatabase(var context: Context) : SQLiteOpenHelper(context, DATABASE_NAM
 
     fun clearData() {
         val db = this.readableDatabase
-        val dropTable = "DROP TABLE IF EXISTS " + TABLE_CURRENT_NAME
+        val dropTable = "DROP TABLE IF EXISTS $TABLE_CURRENT_NAME"
         db.execSQL(dropTable)
         createTable(db)
     }

@@ -12,7 +12,6 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
-
         Item.getDatabase().forEach { createNewItem(it.name, it.price) }
 
     }
